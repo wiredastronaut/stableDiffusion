@@ -9,7 +9,6 @@ extent = 2
 starting_position = np.array([0,0])
 current_state = starting_position
 path = np.zeros((steps+1, 2))
-#Something is off here - come and fix
 for s in range(steps):
     #sample off the motion's probabilistic distribution
     motion_vector = np.random.randint(int(-extent/2), int(extent/2)+1, size=(1, 2))
