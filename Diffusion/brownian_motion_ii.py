@@ -36,17 +36,22 @@ current_time = ts[0]
 current_positions = swiss_roll
 #Step through time
 for i in range(1, len(ts)):
-    #New state time
+    #New state time (called out here specifically)
     new_time = ts[i]
+    
+    #Variance is scaled by time, find the time_delta
     time_delta = new_time - current_time
+    
     #Randomly sample from the zero mean gaussian to get a position step,
     #variance is scaled by time delta. Do this for the number of samples within
     #swiss_roll
-    #position_step = random.gauss(0, np.sqrt(time_delta))
     position_steps = np.random.normal(0, np.sqrt(time_delta), size=swiss_roll.shape)
-    #Using the sampled position step, move the particle forward
+    
+    #Using the sampled position step, move the particle
     new_positions = current_positions + position_steps
+    
     positions.append(new_positions)
+    
     #Update current state
     current_positions = new_positions
     current_time = new_time
