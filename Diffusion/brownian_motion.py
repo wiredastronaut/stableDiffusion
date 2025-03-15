@@ -9,24 +9,19 @@ import random
 
 #Times
 ts = np.linspace(0, 100, 50)
-
-starting_position = 3
-
+starting_position = 0
 #Position over time
 positions = []
 positions.append(starting_position)
-
 #Probability density over time
 densities = []
-initial_density = 1/(2*np.pi * ts[1]) * np.exp(-starting_position**2/(2*ts[1]))
-densities.append(initial_density)
+densities.append(1)
 
 #Initial definition
 current_time = ts[0]
 current_position = starting_position
 #Step through time
 for i in range(1, len(ts)):
-    
     #New state time
     new_time = ts[i]
     time_delta = new_time - current_time
